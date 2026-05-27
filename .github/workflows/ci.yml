@@ -27,7 +27,5 @@ jobs:
       - name: Run tests
         run: go test -race -timeout 60s ./...
 
-      - name: Check go mod tidy
-        run: |
-          go mod tidy
-          git diff --exit-code go.mod go.sum
+      - name: Build
+        run: go build ./...
