@@ -1,0 +1,99 @@
+name: 🐛 Bug Report
+description: Something isn't working? Report it here
+title: "BUG: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a bug! Please fill out as much detail as possible.
+
+  - type: input
+    id: version
+    attributes:
+      label: go-music-gen Version
+      description: Which version or commit are you using?
+      placeholder: "e.g. v1.0.0 or commit sha"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating System
+      options:
+        - macOS (Apple Silicon)
+        - macOS (Intel)
+        - Linux (amd64)
+        - Linux (arm64)
+        - Windows
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device
+    attributes:
+      label: Compute Device
+      options:
+        - CUDA GPU
+        - Apple Silicon (MPS)
+        - Intel GPU (XPU)
+        - CPU
+        - Other / Unknown
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe what you were doing and what went wrong.
+      placeholder: "Example: I sent a POST /generate request and got a 500 error..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: Minimal command or request to reproduce the issue.
+      placeholder: |
+        1. Start server: ./go-music-gen --host 0.0.0.0 --port 4009 --prod
+        2. Send request: curl -X POST http://localhost:4009/generate -d '{"caption": "lo-fi beat"}'
+        3. See error: ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Error output / logs
+      description: Paste the full terminal output or error message.
+      render: shell
+    validations:
+      required: false
+
+  - type: input
+    id: go-version
+    attributes:
+      label: Go version
+      placeholder: "e.g. go1.24.2"
+    validations:
+      required: false
+
+  - type: input
+    id: python-version
+    attributes:
+      label: Python version
+      placeholder: "e.g. 3.12.3"
+    validations:
+      required: false

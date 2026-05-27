@@ -1,0 +1,65 @@
+name: 🚀 Feature Request
+description: Suggest a new feature or improvement
+title: "FEAT: "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to suggest an improvement!
+        Before submitting, please check [existing issues](https://github.com/chasedputnam/go-music-gen/issues) to avoid duplicates.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or motivation
+      description: What problem does this solve? What use case are you trying to enable?
+      placeholder: "Example: I want to generate music with a custom seed but the API doesn't expose it..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Describe what you'd like to see added or changed.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Any workarounds or alternative approaches you've tried?
+    validations:
+      required: false
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of the project does this relate to?
+      options:
+        - HTTP API (routes / handlers)
+        - SSE streaming (/generate/stream)
+        - Style transfer (/cover)
+        - Region editing (/repaint)
+        - Health endpoint (/health)
+        - Request validation (internal/schema)
+        - Python inference worker (bridge)
+        - Configuration (internal/config)
+        - Temp directory / cleanup
+        - Logging / middleware
+        - Build / deployment
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Any other context, references, or examples that would help.
+    validations:
+      required: false
