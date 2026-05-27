@@ -14,8 +14,7 @@ Thanks for your interest in contributing! This guide covers everything you need 
 ### Prerequisites
 
 - Go 1.21+
-- Python 3.12+ with ACE-Step installed (same virtualenv as the Python server)
-- ACE-Step model checkpoints in `checkpoints/` (downloaded by `setup.sh`)
+- Python 3.12+
 - A supported compute device: CUDA GPU, Apple Silicon (MPS), Intel GPU (XPU), or CPU
 
 ### Getting Started
@@ -24,15 +23,14 @@ Thanks for your interest in contributing! This guide covers everything you need 
 git clone https://github.com/chasedputnam/go-music-gen.git
 cd go-music-gen
 
-# Download Go dependencies
-go mod download
-
-# Build the server binary
-go build -o go-music-gen ./cmd/server
+# Set up the Python virtualenv, download ACE-Step checkpoints, and build the binary
+bash setup.sh
 
 # Run tests (no GPU or model weights required — uses mock_worker.py)
 go test ./...
 ```
+
+`setup.sh` handles everything — virtualenv creation, ACE-Step installation, model downloads, and the initial Go build. The [`music-gen.server`](https://github.com/chasedputnam/music-gen.server) Python repo is not required.
 
 ### Project Structure
 

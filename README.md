@@ -44,29 +44,31 @@ The Go binary spawns one Python subprocess on startup and keeps it alive for the
 ## Prerequisites
 
 - **Go 1.21+**
-- **Python 3.12+** with ACE-Step installed (same virtualenv as the Python server)
-- **ACE-Step model checkpoints** in `checkpoints/` (downloaded by `setup.sh` from the Python repo)
+- **Python 3.12+** with ACE-Step installed
+- **ACE-Step model checkpoints** in `checkpoints/` (downloaded by `setup.sh` in this repo)
 - A machine with a supported compute device: CUDA GPU, Apple Silicon (MPS), Intel GPU (XPU), or CPU
 
 ---
 
 ## Setup
 
-### 1. Download models
+### 1. Run setup.sh
 
-Run the setup script from the Python repo once to create the virtualenv and download ACE-Step checkpoints:
+Run the setup script in this repo once. It creates the Python virtualenv, downloads ACE-Step checkpoints, and builds the Go binary:
 
 ```bash
-cd ~/repo/music-gen.server
-./setup.sh
+bash setup.sh
 ```
 
-This downloads the DiT model (`acestep-v15-turbo`) and the LLM (`acestep-5Hz-lm-1.7B`) into `checkpoints/`.
+This downloads the DiT model (`acestep-v15-turbo`) and the LLM (`acestep-5Hz-lm-1.7B`) into `checkpoints/` and writes a `.python-path` file so `run.sh` can locate the virtualenv.
+
+> **Note:** The [`music-gen.server`](https://github.com/chasedputnam/music-gen.server) Python repo is **not required**. `setup.sh` handles everything — virtualenv creation, dependency installation, and model downloads — without it.
 
 ### 2. Build
 
+The setup script builds the binary automatically. To rebuild manually:
+
 ```bash
-cd ~/repo/go-music-gen
 go build -o go-music-gen ./cmd/server/
 ```
 
